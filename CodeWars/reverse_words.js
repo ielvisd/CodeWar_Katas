@@ -5,7 +5,8 @@
 // "double  spaces"      ==> "elbuod  secaps"
 
 function reverseWords(str) {
-  let reverseWords = "";
+  // New strategy: use a array for the spaces
+  let reverseWords = [];
   let currentWord = "";
   let priorSpace = false
 
