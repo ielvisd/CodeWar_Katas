@@ -6,53 +6,66 @@
 
 function reverseWords(str) {
   // New strategy: use a array for the spaces
-  let reverseWords = [];
+  var reverseWordsArray = [];
   let currentWord = "";
-  let priorSpace = false
+  let reversedString = ''
 
   // Loop through the string
   for (let i = 0; i < str.length; i++) {
-
-    // if it's a letter, add it to the end of the current word
-    if (str[i] !== " ") {
-        console.log(priorSpace)
-      // if there's a prior space, add the previous word to the reverse string
-      if (priorSpace) {
-          reverseWords += currentWord;
-      }
-      console.log(reverseWords)
-      currentWord = str[i] + currentWord;
-      console.log(currentWord);
-    }
-
     // if it's a space
     if (str[i] === " ") {
-        console.log(i)
-        priorSpace = true
-      // if the previous character was a letter, this word will end at the next letter or end of string
-      let previous = i - 1;
-
-      if (str[previous] !== " ") {
-        let newWord = false;
+      // If the previous character is a letter
+      if (str[i - 1] !== " ") {
+        // add the currentWord to the reverseWordsArray string
+        for (j = 0; j < currentWord.length; j++) {
+          reverseWordsArray[j + i - currentWord.length] = currentWord[j];
+        }
       }
-      currentWord += str[i];
-
-      if (newWord === true) {
-        // reverseWords += currentWord;
-      }
-    //   // reset current word
-    //   currentWord = "";
+      // add it to the array at the current index
+      reverseWordsArray[i] = str[i];
     }
 
-    // if it's the last letter
+    // if it's a letter & the previous character was a space, reset the word
+    if (str[i] !== " " && str[i -1] === " ") {
+      currentWord = "";
+    }
+
+    // if it's a letter
+    if (str[i] !== " ") {
+      // add it to the currentWord at the beginning
+      currentWord = str[i] + currentWord;
+    }
+
+    // if it at the end of the string and it's a character
     if (i === str.length - 1) {
-      console.log(reverseWords);
-      // add the current word to the reverseWords string
-      reverseWords += currentWord;
-      return reverseWords;
+      for (j = 0; j < currentWord.length; j++) {
+        reverseWordsArray[i + j - currentWord.length + 1] = currentWord[j];
+      }
+      for (k = 0; k < reverseWordsArray.length; k++) {
+        // if it's a space
+        if (reverseWordsArray[k] === " ") {
+          reversedString += ` `;
+        } else {
+          reversedString += reverseWordsArray[k];
+        }
+      }
+      return reversedString;
     }
   }
 }
 
-console.log(reverseWords('This is')); // "sihT si na !elpmaxe"
-// console.log(reverseWords("double  spaces")); // "elbuod  secaps"
+console.log(reverseWords('This is an example!')); // "sihT si na !elpmaxe"
+console.log(reverseWords("double  spaced  words")); // "elbuod  secaps"
+
+// My favorite solution: 
+
+function reverseWords(str) {
+  return str
+    .split(" ")
+    .map(function (word) {
+      return word.split("").reverse().join("");
+    })
+    .join(" ");
+}
+
+// I had something like this earlier but was getting strange behavior on the tests. To the next one. 
