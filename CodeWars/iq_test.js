@@ -24,7 +24,7 @@ function iqTest(numbers) {
       numberOfOdd += 1;
     }
   }
-  
+
   let type = null;
   if (numberOfEven > numberOfOdd) {
     type = "even";
@@ -48,3 +48,24 @@ console.log(iqTest("2 4 7 8 10")); // 3 // Third number is odd, while the rest o
 console.log(iqTest("1 2 1 1")); // 2 // Second number is even, while the rest of the numbers are odd
 
 console.log(iqTest("1 2 2")); // 1
+
+// My favorite solution: 
+
+function iqTest(numbers) {
+  numbers = numbers.split(" ");
+
+  var evens = [];
+  var odds = [];
+
+  for (var i = 0; i < numbers.length; i++) {
+    if (numbers[i] & 1) {
+      odds.push(i + 1);
+    } else {
+      evens.push(i + 1);
+    }
+  }
+
+  return evens.length === 1 ? evens[0] : odds[0];
+}
+
+// I like this one because it's similar to mine but a lot shorter and more readable. 
