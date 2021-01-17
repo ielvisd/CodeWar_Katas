@@ -9,5 +9,42 @@
 // iqTest("1 2 1 1") => 2 // Second number is even, while the rest of the numbers are odd
 
 function iqTest(numbers) {
-  // ...
+  let numberArray = numbers.split(" ");
+  let numberOfOdd = 0;
+  let numberOfEven = 0;
+
+  // Loop through the numbers
+  for (let i = 0; i < numberArray.length; i++) {
+    // If it's an even number, add it to numberOfEven
+    if (numberArray[i] % 2 === 0) {
+      numberOfEven += 1;
+    }
+    // If it's an odd number, add it to numberOfDdd
+    if (numberArray[i] % 2 !== 0) {
+      numberOfOdd += 1;
+    }
+  }
+  
+  let type = null;
+  if (numberOfEven > numberOfOdd) {
+    type = "even";
+  } else {
+    type = "odd";
+  }
+
+  //Loop through list looking for first number that's not the current type
+  for (let i = 0; i < numberArray.length; i++) {
+    if (numberArray[i] % 2 === 0 && type === "odd") {
+      return i + 1;
+    }
+    if (numberArray[i] % 2 !== 0 && type === "even") {
+      return i + 1;
+    }
+  }
 }
+
+console.log(iqTest("2 4 7 8 10")); // 3 // Third number is odd, while the rest of the numbers are even
+
+console.log(iqTest("1 2 1 1")); // 2 // Second number is even, while the rest of the numbers are odd
+
+console.log(iqTest("1 2 2")); // 1
