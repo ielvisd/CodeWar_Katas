@@ -21,17 +21,40 @@
 // numbers.odd();     // must return [1, 3, 5]
 
 Array.prototype.square = function () {
+    var squareArray = []
   for (i = 0; i < this.length; i++) {
-    this[i] = this[i] ** 2;
+    squareArray[i] = this[i] ** 2;
   }
 
-  return this;
+  return squareArray;
+};
+
+Array.prototype.cube = function () {
+        var cubeArray = [];
+  for (i = 0; i < this.length; i++) {
+    cubeArray[i] = this[i] ** 3;
+  }
+
+  return cubeArray;
+};
+
+Array.prototype.average = function () {
+  var average = null;
+
+  for (i = 0; i < this.length; i++) {
+    average += this[i];
+  }
+
+  return average / this.length;
 };
 
 // Example
 var numbers = [1, 2, 3, 4, 5];
 
 console.log(numbers.square());
+console.log(numbers.cube());
+console.log(numbers.average());
+
 
 // numbers.square();  // must return [1, 4, 9, 16, 25]
 // numbers.cube();    // must return [1, 8, 27, 64, 125]
