@@ -19,3 +19,23 @@
 // numbers.sum();     // must return 15
 // numbers.even();    // must return [2, 4]
 // numbers.odd();     // must return [1, 3, 5]
+
+Array.prototype.square = function () {
+  for (i = 0; i < this.length; i++) {
+    this[i] = this[i] ** 2;
+  }
+
+  return this;
+};
+
+// Example
+var numbers = [1, 2, 3, 4, 5];
+
+console.log(numbers.square());
+
+// numbers.square();  // must return [1, 4, 9, 16, 25]
+// numbers.cube();    // must return [1, 8, 27, 64, 125]
+// numbers.average(); // must return 3
+// numbers.sum();     // must return 15
+// numbers.even();    // must return [2, 4]
+// numbers.odd();     // must return [1, 3, 5]
