@@ -21,7 +21,7 @@
 // numbers.odd();     // must return [1, 3, 5]
 
 Array.prototype.square = function () {
-    var squareArray = []
+  var squareArray = [];
   for (i = 0; i < this.length; i++) {
     squareArray[i] = this[i] ** 2;
   }
@@ -30,7 +30,7 @@ Array.prototype.square = function () {
 };
 
 Array.prototype.cube = function () {
-        var cubeArray = [];
+  var cubeArray = [];
   for (i = 0; i < this.length; i++) {
     cubeArray[i] = this[i] ** 3;
   }
@@ -48,13 +48,49 @@ Array.prototype.average = function () {
   return average / this.length;
 };
 
+Array.prototype.sum = function () {
+  var sum = null;
+
+  for (i = 0; i < this.length; i++) {
+    sum += this[i];
+  }
+
+  return sum;
+};
+
+Array.prototype.even = function () {
+  var evenArray = [];
+
+  for (i = 0; i < this.length; i++) {
+    if (this[i] % 2 === 0) {
+      evenArray.push(this[i]);
+    }
+  }
+
+  return evenArray;
+};
+
+Array.prototype.odd = function () {
+  var oddArray = [];
+
+  for (i = 0; i < this.length; i++) {
+    if (this[i] % 2 !== 0) {
+      oddArray.push(this[i]);
+    }
+  }
+
+  return oddArray;
+};
+
 // Example
 var numbers = [1, 2, 3, 4, 5];
 
 console.log(numbers.square());
 console.log(numbers.cube());
 console.log(numbers.average());
-
+console.log(numbers.sum());
+console.log(numbers.even());
+console.log(numbers.odd());
 
 // numbers.square();  // must return [1, 4, 9, 16, 25]
 // numbers.cube();    // must return [1, 8, 27, 64, 125]
