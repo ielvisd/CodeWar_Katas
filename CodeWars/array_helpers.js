@@ -98,3 +98,28 @@ console.log(numbers.odd());
 // numbers.sum();     // must return 15
 // numbers.even();    // must return [2, 4]
 // numbers.odd();     // must return [1, 3, 5]
+
+// My favorite solution: 
+
+Object.assign(Array.prototype, {
+  square() {
+    return this.map((n) => n * n);
+  },
+  cube() {
+    return this.map((n) => Math.pow(n, 3));
+  },
+  sum() {
+    return this.reduce((p, n) => p + n, 0);
+  },
+  average() {
+    return this.reduce((p, n) => p + n, 0) / this.length;
+  },
+  even() {
+    return this.filter((n) => !(n % 2));
+  },
+  odd() {
+    return this.filter((n) => n % 2);
+  }
+});
+
+// I like this one because it's clean, uses Array methods & groups them all using Object.assign
