@@ -16,5 +16,9 @@
 
 function dataReverse(data) {
   // Your code here
+
+  // Find out how many bits there are
+
+  // Loop through all of the bits, bit by bit reversing each one along the way and adding to the reverse array
 }
 
